@@ -1,0 +1,246 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4%;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #38bdf8, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.header-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #111827;
+  position: sticky;
+  top: 0;
+}
+
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #94a3b8;
+}
+
+.navbar a:hover {
+  color: #38bdf8;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+.market-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.card {
+  background: #1e293b;
+  padding: 1.5rem;
+  border-radius: 15px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.chart-section {
+  padding: 2rem;
+}
+
+.chart-wrapper {
+  width: 92%;
+  margin: 3rem auto;
+  padding: 2rem;
+
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
+}
+
+.timeframe-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.timeframe-controls button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #1e293b;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timeframe-controls button:hover {
+  background: #38bdf8;
+  color: black;
+}
+
+.timeframe-controls button.active {
+  background: #38bdf8;
+  color: black;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+.indicator-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.indicator {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #1e293b;
+  color: #94a3b8;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.indicator.active {
+  background: #facc15;
+  color: black;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
+}
+
+.kpi-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 92%;
+  margin: 2rem auto;
+}
+
+.kpi-card {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 1.5rem;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+}
+
+.kpi-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.kpi-card p {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.about-section {
+  width: 92%;
+  margin: 3rem auto;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.about-section h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.search-bar {
+  width: 92%;
+  margin: 2rem auto;
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(56,189,248,0.6);
+}
+
+.search-bar button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.search-bar button:hover {
+  transform: translateY(-2px);
+}
+
+.analysis {
+  padding: 2rem;
+  background: #111827;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0b0f19;
+  color: #64748b;
+}

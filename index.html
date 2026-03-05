@@ -1,86 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<header class="main-header">
+  <div class="brand">
+    <h1>VectorAlpha</h1>
+    <p>Quantitative Market Intelligence</p>
+  </div>
+  <div class="header-stats">
+    <div class="live-dot"></div>
+    <span>Live Market Data</span>
+  </div>
+</header>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Update</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinMarket | Daily Market Intelligence</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 
 <body>
-    <header>
-        <h1> Market Update <span class="construction">(Website under construction)</span></h1>
-        <h3> This is the website for daily market movement of which are the market mover stocks. </h3>
-        <nav>
-            <ul>
-            <li><a href="#Today">Today's market</a></li>
-            <li><a href="#Yesterday">Yesterday's market</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="Intro">
-        <p>
-            Hey, guys. Thank you for visiting my website. My name is Kunj Bhavsar. My background in from 
-            computer science and I like to work and develop websites, softwares. Some of my other interests
-            are systems admin, Network, and technical analysis. This webstie shows market movers of everyday 
-            in stock market including crypto and commodities. which is one of my interest/hobby. 
-        </p>
-        <P>I hope you like this webstie!!!!</P>
-        <div class="image">
-            <img src="photo-1550751827-4bd374c3f58b.avif" alt="image">
-        </div>
-        <p>
-            Hey, guys. Thank you for visiting my website. My name is Kunj Bhavsar. My background in from 
-            computer science and I like to work and develop websites, softwares. Some of my other interests
-            are systems admin, Network, and technical analysis. This webstie shows market movers of everyday 
-            in stock market including crypto and commodities. which is one of my interest/hobby. 
-        </p>
-        <P>I hope you like this webstie!!!!</P>
-    </section>
+  <header class="navbar">
+    <h1>FinMarket</h1>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#trends">Trends</a>
+      <a href="#analysis">Daily Alpha</a>
+    </nav>
+  </header>
 
-    <section id="Today"> 
-    <p class="date">Posted on July 8, 2024</p>
-        <p id ="firstParagraph">
-            <li>	<span class="highlight">SPY</span> is up on daily. </li>
-            <li>	<span class="highlight">TSM</span> 9 in row green months. Looks overbought? On monthly negative divergence. </li>
-            <li>	<span class="highlight">BTC</span> 60k short term resistance. </li>
-            <li>	<span class="highlight">ETH</span> into the support 2800, upside to the 3300.</li> 
-            <li>	<span class="highlight">GOLD</span> look for retrace for the upside move. </li>
-            <li>	<span class="highlight">SILVER</span> same as gold, zone 28.5 to 29</li>
-        </p>
-    </section>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      id="tickerInput" 
+      placeholder="Search ticker (AAPL, NVDA, TSLA...)"
+    >
+    <button id="searchBtn">Load</button>
+  </div>
 
-    <section id="Yesterday">
-    <p class="date">Posted on July 5, 2024</p>
+  <section class="hero">
+    <h2>Daily Market Intelligence</h2>
+    <p>Tracking equities, crypto & macro — with data-driven analysis.</p>
+  </section>
+
+  <section id="overview" class="market-cards">
+    <div class="card">
+      <h3>S&P 500</h3>
+      <p id="sp500">Loading...</p>
+    </div>
+    <p id="trendLabel"></p>
+
+    <div class="card">
+      <h3>NASDAQ</h3>
+      <p id="nasdaq">Loading...</p>
+    </div>
+
+    <div class="card">
+      <h3>BTC</h3>
+      <p id="btc">Loading...</p>
+    </div>
+
+    <div class="card">
+      <h3>Gold</h3>
+      <p id="gold">Loading...</p>
+    </div>
+  </section>
+
+  <div class="indicator-controls">
+    <div class="chart-wrapper">
+      <button id="toggleEMA" class="indicator active">20 EMA</button>
+      <button id="toggleRSI" class="indicator">RSI (14)</button>
+    </div>
+  </div>
+
+  <div class="timeframe-controls">
+    <div class="chart-wrapper">
+      <button data-time="DAILY">1D</button>
+      <button data-time="WEEKLY">1W</button>
+      <button data-time="MONTHLY">1M</button>
+    </div>
+  </div>
+
+  <section id="trends" class="chart-section">
+    <div class="chart-wrapper">
+      <h2 id="tickerTitle">SPY</h2>
+      <canvas id="marketChart"></canvas>
+    </div>
+  </section>
+
+  <section id="analysis" class="analysis">
+    <h2>Today's Commentary</h2>
     <p>
-        <li>	Non-Farm Payrolls came in line with expectations. 206k v 200k. </li>
-        <li>	Unemployment Rate 4.10% vs 4.00% (reported vs expected) </li>
-        <li>	Lot of signals of deflation starting. </li>
-        <li>	<span class="highlight">TSLA</span> into three bar surge? Into resistance?</li>
-        <li>	<span class="highlight">BTC</span> four straight days of down moves. 52k level and previous high of spot ETF 49k level.</li> 
-        <li>    <span class="highlight">ETH</span> 2800 level. </li>
+      SPY holding key support while BTC tests resistance.
+      Watching macro data for next directional move.
     </p>
-    </section>
+  </section>
 
-    <p class="date">Posted on July 4, 2024</p>
-    <p>
-        <li>Happy Fourth, Market Closed. <a href = "https://en.wikipedia.org/wiki/Independence_Day_(United_States)">Little History</a></li>
-    </p>
+  <section class="kpi-section">
+    <div class="kpi-card">
+      <h3>Last Price</h3>
+      <p id="kpiPrice">--</p>
+    </div>
 
-    <p class="date">Posted on July 3, 2024</p>
-    <p>
-        <li>    Market closes early today.</li>	 
-        <li>    <span class="highlight">NVDA</span> pre-market is negative.</li>	 
-        <li>    <span class="highlight">TSLA</span> this becomes momentum play. We know into big resistance zone,</li>	 
-        <li>    <span class="highlight">BTC</span> $60k level break confirmed can be more bearish signal.</li>	 
-        <li>    <span class="highlight">GOLD</span> verge on above breakout, need to confirm.</li>	
-        <li>    <span class="highlight">PALLADIUM</span> breakout. Holding above down slopping trendline.</li>	 
-        <li>    <span class="highlight">NATGAS</span> target 2.1 </li>	
-    </p>
+    <div class="kpi-card">
+      <h3>Daily Change</h3>
+      <p id="kpiChange">--</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>20 EMA</h3>
+      <p id="kpiEMA">--</p>
+    </div>
+
+    <div class="kpi-card">
+      <h3>RSI (14)</h3>
+      <p id="kpiRSI">--</p>
+    </div>
+  </section>
+
+<section class="about-section">
+  <h2>Market Overview</h2>
+  <p>
+    VectorAlpha provides real-time quantitative insights powered by market
+    data analytics. This dashboard integrates trend analysis, momentum
+    indicators, and multi-timeframe price action to support data-driven
+    investment decisions.
+  </p>
+</section>
+
+  <footer>
+    <p>Built by Kunj Bhavsar | Web Dev + API + Data Analytics</p>
+  </footer>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
