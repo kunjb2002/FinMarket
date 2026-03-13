@@ -1,198 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FinMarket | Daily Market Intelligence</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VectorAlpha | Market Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
-
 <body>
 
-  <!-- TOP HEADER -->
-  <header class="main-header">
-    <div class="brand">
-      <h1>VectorAlpha</h1>
-      <p>Quantitative Market Intelligence</p>
+<!-- ── NOISE OVERLAY ─────────────────────────────────────────────────────── -->
+<div class="noise-overlay"></div>
+
+<!-- ── TICKER TAPE ───────────────────────────────────────────────────────── -->
+<div class="ticker-tape-wrap">
+  <div class="ticker-tape">
+    <span class="tape-item up" data-sym="SPY">SPY <b>+0.42%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="AAPL">AAPL <b>+1.12%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item down" data-sym="TSLA">TSLA <b>-2.38%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="NVDA">NVDA <b>+3.04%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item down" data-sym="META">META <b>-0.88%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="MSFT">MSFT <b>+0.67%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="GOOGL">GOOGL <b>+1.55%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item down" data-sym="AMZN">AMZN <b>-0.22%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="QQQ">QQQ <b>+0.91%</b></span>
+    <span class="sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="tape-item up" data-sym="SPY">SPY <b>+0.42%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="AAPL">AAPL <b>+1.12%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item down" data-sym="TSLA">TSLA <b>-2.38%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="NVDA">NVDA <b>+3.04%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item down" data-sym="META">META <b>-0.88%</b></span>
+    <span class="sep">·</span>
+    <span class="tape-item up" data-sym="MSFT">MSFT <b>+0.67%</b></span>
+  </div>
+</div>
+
+<!-- ── NAVBAR ────────────────────────────────────────────────────────────── -->
+<header class="navbar">
+  <div class="brand">
+    <span class="brand-icon">⚡</span>
+    <span class="brand-name">Vector<span class="brand-accent">Alpha</span></span>
+  </div>
+  <nav class="nav-links">
+    <a href="#trends">Charts</a>
+    <a href="#kpi-section">Stats</a>
+    <a href="#analysis">Alpha</a>
+  </nav>
+  <div class="nav-right">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span>LIVE</span>
     </div>
+  </div>
+</header>
 
-    <div class="header-stats">
-      <div class="live-dot"></div>
-      <span>Live Market Data</span>
-    </div>
-  </header>
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-tag">Quantitative Market Intelligence</div>
+  <h1 class="hero-title">Read the market<br /><span class="hero-gradient">before it moves.</span></h1>
+  <p class="hero-sub">Real-time candlestick charts · EMA 20 · RSI 14 · Volume analysis</p>
 
-
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <h1>FinMarket</h1>
-
-    <nav>
-      <a href="#overview">Overview</a>
-      <a href="#trends">Trends</a>
-      <a href="#analysis">Daily Alpha</a>
-    </nav>
-  </header>
-
-
-  <!-- SEARCH BAR -->
+  <!-- Search Bar -->
   <div class="search-bar">
-    <input
-      type="text"
-      id="tickerInput"
-      placeholder="Search ticker (AAPL, NVDA, TSLA...)">
-
-    <button id="searchBtn">Load</button>
+    <div class="search-inner">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="tickerInput" placeholder="Enter ticker — AAPL, NVDA, SPY..." autocomplete="off" />
+    </div>
+    <button id="searchBtn">Load Chart</button>
   </div>
 
+  <!-- Quick picks -->
+  <div class="quick-picks">
+    <span class="qp-label">Quick:</span>
+    <button class="qp-btn" data-sym="SPY">SPY</button>
+    <button class="qp-btn" data-sym="AAPL">AAPL</button>
+    <button class="qp-btn" data-sym="NVDA">NVDA</button>
+    <button class="qp-btn" data-sym="TSLA">TSLA</button>
+    <button class="qp-btn" data-sym="MSFT">MSFT</button>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h2>Daily Market Intelligence</h2>
-    <p>Tracking equities, crypto & macro — with data-driven analysis.</p>
-  </section>
+<!-- ── CHART SECTION ──────────────────────────────────────────────────────── -->
+<section id="trends" class="chart-section">
+  <div class="chart-wrapper">
 
+    <!-- Chart header -->
+    <div class="chart-header">
+      <div class="chart-title-row">
+        <h2 id="tickerTitle">SPY</h2>
+        <div class="chart-badges">
+          <span class="badge badge-candle">🕯 Candlestick</span>
+        </div>
+      </div>
 
-  <!-- MARKET CARDS -->
-  <section id="overview" class="market-cards">
+      <!-- Controls row -->
+      <div class="controls-row">
+        <div class="timeframe-controls">
+          <button data-time="1D">1D</button>
+          <button data-time="1W">1W</button>
+          <button data-time="1M" class="active">1M</button>
+          <button data-time="3M">3M</button>
+          <button data-time="1Y">1Y</button>
+          <button data-time="ALL">ALL</button>
+        </div>
+        <div class="indicator-controls">
+          <button id="btnPrice"  class="indicator active ind-price">Price</button>
+          <button id="btnEMA"    class="indicator active ind-ema">EMA 20</button>
+          <button id="btnRSI"    class="indicator        ind-rsi">RSI 14</button>
+          <button id="btnVolume" class="indicator active ind-vol">Volume</button>
+        </div>
+        <!-- Cache inspector toggle -->
+        <button id="btnCachePanel" class="cache-toggle-btn" title="View cached symbols">🗄 Cache</button>
+      </div>
 
-    <div class="card">
-      <h3>S&P 500</h3>
-      <p id="sp500">Loading...</p>
+      <!-- Cache inspector panel -->
+      <div id="cachePanel" class="cache-panel" style="display:none">
+        <div class="cache-panel-header">
+          <span>📦 localStorage Cache</span>
+          <button id="btnClearCache" class="cache-clear-btn">🗑 Clear All</button>
+        </div>
+        <div id="cacheList" class="cache-list">
+          <span style="color:var(--text-muted);font-size:12px">No cached data yet.</span>
+        </div>
+        <p class="cache-hint">Data is cached for 24 hours. Click a symbol to reload from cache instantly (no API call).</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>NASDAQ</h3>
-      <p id="nasdaq">Loading...</p>
+    <!-- Loading / Error states -->
+    <div id="loadingSpinner" class="loading-spinner" style="display:none">
+      <div class="spinner-ring"></div>
+      <span>Fetching market data…</span>
     </div>
+    <div id="errorMsg" class="error-msg" style="display:none"></div>
 
-    <div class="card">
-      <h3>BTC</h3>
-      <p id="btc">Loading...</p>
+    <!-- Charts — lightweight-charts mounts into divs, not canvas -->
+    <div class="chart-container">
+      <div class="price-panel" id="priceChart"></div>
+      <div class="rsi-divider" id="rsiDivider" style="display:none">
+        <span>RSI (14)</span>
+        <span id="rsiValue" class="rsi-live">—</span>
+      </div>
+      <div class="rsi-panel" id="rsiChart" style="display:none"></div>
     </div>
-
-    <div class="card">
-      <h3>Gold</h3>
-      <p id="gold">Loading...</p>
-    </div>
-
-  </section>
-
-
-  <!-- INDICATOR CONTROLS -->
-  <div class="indicator-controls">
-
-    <button id="toggleEMA" class="indicator active">
-      20 EMA
-    </button>
-
-    <button id="toggleRSI" class="indicator">
-      RSI (14)
-    </button>
 
   </div>
+</section>
 
-
-  <!-- TIMEFRAME BUTTONS -->
-  <div class="timeframe-controls">
-
-    <button data-time="DAILY" class="active">1D</button>
-
-    <button data-time="WEEKLY">1W</button>
-
-    <button data-time="MONTHLY">1M</button>
-
-  </div>
-
-
-  <!-- CHART -->
-  <section id="trends" class="chart-section">
-
-    <div class="chart-wrapper">
-
-      <h2 id="tickerTitle">SPY</h2>
-
-      <canvas id="marketChart"></canvas>
-
-    </div>
-
-  </section>
-
-
-  <!-- KPI SECTION -->
-  <section class="kpi-section">
-
-    <div class="kpi-card">
+<!-- ── KPI CARDS ─────────────────────────────────────────────────────────── -->
+<section id="kpi-section" class="kpi-section">
+  <div class="kpi-card">
+    <div class="kpi-icon">💰</div>
+    <div>
       <h3>Last Price</h3>
       <p id="kpiPrice">--</p>
     </div>
-
-    <div class="kpi-card">
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-icon">📈</div>
+    <div>
       <h3>Daily Change</h3>
       <p id="kpiChange">--</p>
     </div>
-
-    <div class="kpi-card">
-      <h3>20 EMA</h3>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-icon">〰️</div>
+    <div>
+      <h3>EMA 20</h3>
       <p id="kpiEMA">--</p>
     </div>
-
-    <div class="kpi-card">
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-icon">⚡</div>
+    <div>
       <h3>RSI (14)</h3>
       <p id="kpiRSI">--</p>
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- ── ALPHA SECTION ─────────────────────────────────────────────────────── -->
+<section id="analysis" class="alpha-section">
+  <div class="alpha-inner">
+    <div class="alpha-tag">Today's Commentary</div>
+    <h2>Market Alpha 🧠</h2>
+    <div class="alpha-cards">
+      <div class="alpha-card">
+        <div class="alpha-card-header">
+          <span class="alpha-ticker">SPY</span>
+          <span class="alpha-signal signal-bullish">Bullish</span>
+        </div>
+        <p>Holding key support at 200 EMA. Watching for breakout above recent highs as macro data cools inflation expectations.</p>
+      </div>
+      <div class="alpha-card">
+        <div class="alpha-card-header">
+          <span class="alpha-ticker">NVDA</span>
+          <span class="alpha-signal signal-bullish">Momentum</span>
+        </div>
+        <p>AI infrastructure spend accelerating. RSI extended but momentum-driven. Watch earnings for next catalyst.</p>
+      </div>
+      <div class="alpha-card">
+        <div class="alpha-card-header">
+          <span class="alpha-ticker">TSLA</span>
+          <span class="alpha-signal signal-bearish">Caution</span>
+        </div>
+        <p>Delivery miss risk priced in partially. Below EMA 20 — wait for reclaim before re-entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-brand">⚡ VectorAlpha</div>
+  <p>Built by Kunj Bhavsar · Web Dev + API + Data Analytics</p>
+  <p class="footer-disclaimer">For educational purposes only. Not financial advice.</p>
+</footer>
 
-  <!-- ANALYSIS -->
-  <section id="analysis" class="analysis">
+<!-- ── SCRIPTS ────────────────────────────────────────────────────────────── -->
+<!--
+  Replaced Chart.js + chartjs-chart-financial + chartjs-adapter-date-fns
+  with TradingView's lightweight-charts library.
 
-    <h2>Today's Commentary</h2>
+  WHY: chartjs-chart-financial has an unresolvable version conflict with
+  Chart.js's time scale adapter — format() receives invalid values from
+  the plugin's internal parsing regardless of version pinning.
 
-    <p>
-      SPY holding key support while BTC tests resistance.
-      Watching macro data for next directional move.
-    </p>
+  lightweight-charts is purpose-built for OHLCV candlestick charts:
+    • Accepts "YYYY-MM-DD" time strings natively — no date adapter needed
+    • No hitRadius / element API conflicts
+    • Handles candlestick, line, histogram series out of the box
+    • Used by TradingView's own production charts
+-->
+<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 
-  </section>
+<script type="module" src="js/main.js"></script>
 
+<!-- Quick-pick buttons wired after module loads -->
+<script>
+  // Quick-pick buttons
+  document.querySelectorAll(".qp-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      import("./js/main.js").then(m => m.loadStock(btn.dataset.sym));
+    });
+  });
 
-  <!-- ABOUT -->
-  <section class="about-section">
+  // Wire RSI toggle to show/hide the divider too
+  document.getElementById("btnRSI")?.addEventListener("click", function() {
+    const divider = document.getElementById("rsiDivider");
+    const isActive = this.classList.contains("active");
+    if (divider) divider.style.display = isActive ? "flex" : "none";
+  });
 
-    <h2>Market Overview</h2>
+  // ── Cache Inspector ──────────────────────────────────────────────────────
+  const cachePanel = document.getElementById("cachePanel");
+  const cacheList  = document.getElementById("cacheList");
 
-    <p>
-      VectorAlpha provides real-time quantitative insights powered by market
-      data analytics. This dashboard integrates trend analysis, momentum
-      indicators, and multi-timeframe price action to support data-driven
-      investment decisions.
-    </p>
+  function renderCacheList() {
+    const keys = Object.keys(localStorage).filter(k => k.startsWith("finmarket_"));
+    if (!keys.length) {
+      cacheList.innerHTML = `<span style="color:var(--text-muted);font-size:12px">No cached data yet.</span>`;
+      return;
+    }
+    cacheList.innerHTML = keys.map(key => {
+      const sym = key.replace("finmarket_", "");
+      let info = "?";
+      try {
+        const p = JSON.parse(localStorage.getItem(key));
+        const age = Math.round((Date.now() - p.timestamp) / 60000);
+        const rowCount = Object.keys(p.data?.["Time Series (Daily)"] || {}).length;
+        const expiresIn = Math.round((24*60) - age);
+        info = `${rowCount} bars · cached ${age}m ago · expires in ${expiresIn}m`;
+      } catch(e) {}
+      return `
+        <div class="cache-row">
+          <div>
+            <span class="cache-sym">${sym}</span>
+            <span class="cache-meta">${info}</span>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="cache-load-btn" onclick="import('./js/main.js').then(m=>m.loadStock('${sym}'))">Load</button>
+            <button class="cache-del-btn" onclick="localStorage.removeItem('finmarket_${sym}');renderCacheList()">✕</button>
+          </div>
+        </div>`;
+    }).join("");
+    // expose renderCacheList globally for the delete button onclick
+    window.renderCacheList = renderCacheList;
+  }
 
-  </section>
+  document.getElementById("btnCachePanel")?.addEventListener("click", () => {
+    const open = cachePanel.style.display !== "none";
+    cachePanel.style.display = open ? "none" : "block";
+    if (!open) renderCacheList();
+  });
 
+  document.getElementById("btnClearCache")?.addEventListener("click", () => {
+    Object.keys(localStorage).filter(k => k.startsWith("finmarket_"))
+      .forEach(k => localStorage.removeItem(k));
+    renderCacheList();
+  });
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Built by Kunj Bhavsar | Web Dev + API + Data Analytics</p>
-  </footer>
-
-
-  <!-- CHART LIBRARIES (IMPORTANT ORDER) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-
-
-  <!-- YOUR JAVASCRIPT -->
-  <script src="script.js"></script>
-
+  // Expose for inline onclicks
+  window.renderCacheList = renderCacheList;
+</script>
 
 </body>
 </html>
