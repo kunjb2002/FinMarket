@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<header class="main-header">
-  <div class="brand">
-    <h1>VectorAlpha</h1>
-    <p>Quantitative Market Intelligence</p>
-  </div>
-  <div class="header-stats">
-    <div class="live-dot"></div>
-    <span>Live Market Data</span>
-  </div>
-</header>
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FinMarket | Daily Market Intelligence</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- TOP HEADER -->
+  <header class="main-header">
+    <div class="brand">
+      <h1>VectorAlpha</h1>
+      <p>Quantitative Market Intelligence</p>
+    </div>
+
+    <div class="header-stats">
+      <div class="live-dot"></div>
+      <span>Live Market Data</span>
+    </div>
+  </header>
+
+
+  <!-- NAVBAR -->
   <header class="navbar">
     <h1>FinMarket</h1>
+
     <nav>
       <a href="#overview">Overview</a>
       <a href="#trends">Trends</a>
@@ -35,26 +37,32 @@
     </nav>
   </header>
 
+
+  <!-- SEARCH BAR -->
   <div class="search-bar">
-    <input 
-      type="text" 
-      id="tickerInput" 
-      placeholder="Search ticker (AAPL, NVDA, TSLA...)"
-    >
+    <input
+      type="text"
+      id="tickerInput"
+      placeholder="Search ticker (AAPL, NVDA, TSLA...)">
+
     <button id="searchBtn">Load</button>
   </div>
 
+
+  <!-- HERO -->
   <section class="hero">
     <h2>Daily Market Intelligence</h2>
     <p>Tracking equities, crypto & macro — with data-driven analysis.</p>
   </section>
 
+
+  <!-- MARKET CARDS -->
   <section id="overview" class="market-cards">
+
     <div class="card">
       <h3>S&P 500</h3>
       <p id="sp500">Loading...</p>
     </div>
-    <p id="trendLabel"></p>
 
     <div class="card">
       <h3>NASDAQ</h3>
@@ -70,39 +78,53 @@
       <h3>Gold</h3>
       <p id="gold">Loading...</p>
     </div>
+
   </section>
 
+
+  <!-- INDICATOR CONTROLS -->
   <div class="indicator-controls">
-    <div class="chart-wrapper">
-      <button id="toggleEMA" class="indicator active">20 EMA</button>
-      <button id="toggleRSI" class="indicator">RSI (14)</button>
-    </div>
+
+    <button id="toggleEMA" class="indicator active">
+      20 EMA
+    </button>
+
+    <button id="toggleRSI" class="indicator">
+      RSI (14)
+    </button>
+
   </div>
 
+
+  <!-- TIMEFRAME BUTTONS -->
   <div class="timeframe-controls">
-    <div class="chart-wrapper">
-      <button data-time="DAILY">1D</button>
-      <button data-time="WEEKLY">1W</button>
-      <button data-time="MONTHLY">1M</button>
-    </div>
+
+    <button data-time="DAILY" class="active">1D</button>
+
+    <button data-time="WEEKLY">1W</button>
+
+    <button data-time="MONTHLY">1M</button>
+
   </div>
 
+
+  <!-- CHART -->
   <section id="trends" class="chart-section">
+
     <div class="chart-wrapper">
+
       <h2 id="tickerTitle">SPY</h2>
+
       <canvas id="marketChart"></canvas>
+
     </div>
+
   </section>
 
-  <section id="analysis" class="analysis">
-    <h2>Today's Commentary</h2>
-    <p>
-      SPY holding key support while BTC tests resistance.
-      Watching macro data for next directional move.
-    </p>
-  </section>
 
+  <!-- KPI SECTION -->
   <section class="kpi-section">
+
     <div class="kpi-card">
       <h3>Last Price</h3>
       <p id="kpiPrice">--</p>
@@ -122,23 +144,55 @@
       <h3>RSI (14)</h3>
       <p id="kpiRSI">--</p>
     </div>
+
   </section>
 
-<section class="about-section">
-  <h2>Market Overview</h2>
-  <p>
-    VectorAlpha provides real-time quantitative insights powered by market
-    data analytics. This dashboard integrates trend analysis, momentum
-    indicators, and multi-timeframe price action to support data-driven
-    investment decisions.
-  </p>
-</section>
 
+  <!-- ANALYSIS -->
+  <section id="analysis" class="analysis">
+
+    <h2>Today's Commentary</h2>
+
+    <p>
+      SPY holding key support while BTC tests resistance.
+      Watching macro data for next directional move.
+    </p>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="about-section">
+
+    <h2>Market Overview</h2>
+
+    <p>
+      VectorAlpha provides real-time quantitative insights powered by market
+      data analytics. This dashboard integrates trend analysis, momentum
+      indicators, and multi-timeframe price action to support data-driven
+      investment decisions.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
   <footer>
     <p>Built by Kunj Bhavsar | Web Dev + API + Data Analytics</p>
   </footer>
 
+
+  <!-- CHART LIBRARIES (IMPORTANT ORDER) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+
+  <!-- YOUR JAVASCRIPT -->
   <script src="script.js"></script>
+
 
 </body>
 </html>
